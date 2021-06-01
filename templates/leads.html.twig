@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+	<div class="container ">
+		<div class="row  justify-content: center ">
+			<div class="col">
+				<div>
+					<h1>leads</h1>
+					{% for lead in leads %}
+						<div class="card mt-1">
+							<div class="card-body">
+								- Название сделки --
+								{{ lead.name }}
+							</div>
+							<div class="card-body">
+								- Отв-ный менеджер --
+								{{ lead.manager }}
+							</div>
+							{% for contact in lead.contacts %}
+								<div class="card-body">
+									- Имя контакта --
+									{{ contact.name }}
+									- Номер телефона --
+									{{ contact.fhone }}
+									- Email --
+									{{ contact.email ?? "" }}
+								</div>
+							{% endfor %}
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="mt-3">
+				<ul class="nav nav-pills nav-fill  ">
+					<li class="nav-item">
+						<a class="nav-link active" href="/create">Create Lead</a>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	{% endblock content %}
